@@ -49,3 +49,12 @@ img:hover{
 #twitchLogo:hover{
   cursor: pointer;
 }
+
+.container{
+  padding-top: 75px;
+  height: 100%;
+  background-color: #2A5397;
+  width: 60%;
+  margin: auto;
+  border: none;
+}
