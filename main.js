@@ -17,7 +17,9 @@ window.onload = function (){
 };
 */
 //determine if streamer is online and appends user status
-function status(userStream){
+var streamers = ["savjz","freecodecamp","Magic","OgamingSC2","cretetion","storbeck","habathcx","RobotCaleb","noobs2ninjas"];
+
+function gameStatus(userStream){
     if(userStream.stream == null)
     {
       return "<p class="+"streamStatus"+">User: offline</p>";
@@ -27,13 +29,46 @@ function status(userStream){
     }
 }
 
+//determines which div class should be used within the container
+function divClass(userStream)
+{
+  if(userStream.stream == null)
+  {
+    return "<div class= "+"streamerOfline"+">";
+  }
+  else{
+    return "<div class= "+"streamerOnline"+">";
+  }
+}
+//determine div class
+function backgroundImage(userStream)
+{
+  if(userStream.stream == null)
+  {
+    return "<div class= "+"streamerOfline"+">";
+  }
+  else{
+    return "<div class= "+"streamerOnline"+">";
+  }
+}
 
+function determineImage(userStream){
+  if(userStream.stream == null)
+  {
+    return "<img src= "+"gameuiOffline.png"+">";
+  }
+  else{
+    return "<img src= "+"gameuiImage.png"+">";
+  }
+}
 
 //Add user to webpage
 function appendUser(user, stream)
 {
-  userStatus = status(stream);
-  $(".container").append("<div class= "+"streamer"+"><img src="+""+user.logo+""+" class="+"profileLogo"+"><img src="+"gameuiImage.png"+" class= "+"streamerBackground"+">"+"<a"+" href="+ "https://www.twitch.tv/"+user.name+ " class="+ "name"+">"+user.name+"</a>"+
+  userStatus = gameStatus(stream);
+  streamerClass = divClass(stream);
+  backgroundImage = determineImage(stream);
+  $(".container").append(streamerClass+"<img src="+""+user.logo+""+" class="+"profileLogo>"+backgroundImage+"<a"+" href="+ "https://www.twitch.tv/"+user.name+ " class="+ "name"+">"+user.name+"</a>"+
   "<p class=type>"+"Type:"+user.type+"</p>"+userStatus+"</div>");
 }
 
@@ -46,15 +81,14 @@ function getUser(user)
 
   $.getJSON('https://wind-bow.glitch.me/twitch-api/streams/'+user+'/?callback=?', function(streamData){
     appendUser(userData, streamData);
-    console.log(userData);
-    console.log(streamData);
-    console.log(streamData.stream.game);
   });
 });
 }
 
+
 $(document).ready(function(){
-  getUser("savjz");
-  getUser("freecodecamp");
-  getUser("Magic");
+for(var i=0; i<streamers.length; i++)
+{
+  getUser(streamers[i]);
+}
 });
