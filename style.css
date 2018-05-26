@@ -1,5 +1,5 @@
 body{
-  background-color: #000000;
+  background-color: #19171c;
 }
 
 .fixed-nav-bar{
@@ -51,10 +51,75 @@ img:hover{
 }
 
 .container{
-  padding-top: 75px;
-  height: 100vh;
-  background-color: #2A5397;
+  position: relative;
+  padding-top: 60px;
+  height: 100%;
   width: 60%;
   margin: auto;
   border: none;
+}
+
+
+
+.streamer{
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: #2A5397;;
+  border-top-color: #FFFFFF;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.profileLogo{
+  margin-top: 3.2px;
+  margin-left: 3.2px;
+  left: 0;
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.streamerBackground{
+  left: 0;
+  position: absolute;
+  width: 335px;
+  height: 117px;
+}
+
+.name{
+  left: 126px;
+  top: 17px;
+  position: absolute;
+  font-family: 'Dimitri Swank';
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.type{
+  top: 81px;
+  left: 126px;
+  position: absolute;
+  font-family: 'Helvetica';
+  color: #ffffff;
+}
+
+.streamStatus{
+  top: 45px;
+  left: 130px;
+  position: absolute;
+  font-family: 'Helvetica';
+  color: #ffffff;
+}
+
+.gamePlayed{
+  top: 60px;
+  left: 400px;
+  position: absolute;
+  font-family: 'Helvetica';
+  color: #ffffff;
 }
