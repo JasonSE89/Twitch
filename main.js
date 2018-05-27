@@ -80,9 +80,30 @@ function hideMenu(){
   });
 }
 
+//checks to see if Streamer is already within the list
+function checkStreamerList(id){
+    for(var i=0; i<streamers.length; i++)
+    {
+      if(id == streamers[i])
+      {
+        return true;
+      }
+    }
+    return false;
+}
+
+//adds streamer
 function getText(){
   $("#submit").click(function(){
+    if(checkStreamerList($("#userId").val())==false)
+    {
     getUser($("#userId").val());
+    streamers.push($("#userId").val());
+    console.log("user successfully added");
+    }
+    else{
+      console.log("streamer already added exist");
+    }
   });
 }
 
