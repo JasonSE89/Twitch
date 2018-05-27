@@ -66,6 +66,7 @@ function getUser(user)
 });
 }
 
+
 function showMenu(){
 
   $("#twitchLogo").click(function(){
@@ -79,6 +80,12 @@ function hideMenu(){
   });
 }
 
+function getText(){
+  $("#submit").click(function(){
+    getUser($("#userId").val());
+  });
+}
+
 
 $(document).ready(function(){
 for(var i=0; i<streamers.length; i++)
@@ -88,6 +95,7 @@ for(var i=0; i<streamers.length; i++)
 
 showMenu();
 hideMenu();
+getText();
 
 
 });
