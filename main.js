@@ -1,22 +1,3 @@
-/*
-function getStreamerStatus(){
-  var twitchRequest = new XMLHttpRequest();
-  let url = 'https://api.twitch.tv/kraken/freecodecamp';
-  let data;
-  twitchRequest.open('GET', url);
-  twitchRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
-  twitchRequest.onload = function(){
-
-    console.log(twitchRequest.responseText);
-}
-  twitchRequest.send()
-}
-
-window.onload = function (){
-  getStreamerStatus();
-};
-*/
-//determine if streamer is online and appends user status
 var streamers = ["savjz","freecodecamp","Magic","OgamingSC2","cretetion","storbeck","habathcx","RobotCaleb","noobs2ninjas"];
 
 function gameStatus(userStream){
@@ -85,10 +66,28 @@ function getUser(user)
 });
 }
 
+function showMenu(){
+
+  $("#twitchLogo").click(function(){
+    $(".modifyStreamers").css("visibility","visible");
+  });
+}
+
+function hideMenu(){
+  $("#close").click(function(){
+    $(".modifyStreamers").css("visibility", "hidden");
+  });
+}
+
 
 $(document).ready(function(){
 for(var i=0; i<streamers.length; i++)
 {
   getUser(streamers[i]);
 }
+
+showMenu();
+hideMenu();
+
+
 });
