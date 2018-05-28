@@ -11,27 +11,17 @@ function gameStatus(userStream){
 }
 
 //determines which div class should be used within the container
-function divClass(userStream)
+function divClass(userStream, name)
 {
   if(userStream.stream == null)
   {
-    return "<div class= "+"streamerOfline"+">";
+    return "<div class= "+"streamerOfline"+" id= "+name+">";
   }
   else{
-    return "<div class= "+"streamerOnline"+">";
+    return "<div class= "+"streamerOnline"+" id= "+name+">";
   }
 }
-//determine div class
-function backgroundImage(userStream)
-{
-  if(userStream.stream == null)
-  {
-    return "<div class= "+"streamerOfline"+">";
-  }
-  else{
-    return "<div class= "+"streamerOnline"+">";
-  }
-}
+
 
 function determineImage(userStream){
   if(userStream.stream == null)
@@ -47,7 +37,7 @@ function determineImage(userStream){
 function appendUser(user, stream)
 {
   userStatus = gameStatus(stream);
-  streamerClass = divClass(stream);
+  streamerClass = divClass(stream, user.name);
   backgroundImage = determineImage(stream);
   $(".container").append(streamerClass+"<img src="+""+user.logo+""+" class="+"profileLogo>"+backgroundImage+"<a"+" href="+ "https://www.twitch.tv/"+user.name+ " class="+ "name"+">"+user.name+"</a>"+
   "<p class=type>"+"Type:"+user.type+"</p>"+userStatus+"</div>");
@@ -93,7 +83,7 @@ function checkStreamerList(id){
 }
 
 //adds streamer
-function getText(){
+function addStreamer(){
   $("#submit").click(function(){
     if(checkStreamerList($("#userId").val())==false)
     {
@@ -116,7 +106,6 @@ for(var i=0; i<streamers.length; i++)
 
 showMenu();
 hideMenu();
-getText();
-
+addStreamer();
 
 });
