@@ -13,11 +13,9 @@ body{
 }
 
 span{
-  font-size: 30px;
-  padding: 22px 23px;
+  width: 300px;
+  font-size: 100px;
   text-align: center;
-  float: right;
-  display: block;
 }
 
 .images{
@@ -42,8 +40,10 @@ img:hover{
 #twitchLogo{
   font-family: 'Dimitri Swank';
   color: #FFFFFF;
-  float: left;
-  display: block;
+  display: table;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 40px;
 }
 
 #twitchLogo:hover{
