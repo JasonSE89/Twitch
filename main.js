@@ -26,10 +26,10 @@ function divClass(userStream, name)
 function determineImage(userStream){
   if(userStream.stream == null)
   {
-    return "<img src= "+"gameuiOffline.png"+">";
+    return "<img src= "+"images/gameuiOffline.png"+">";
   }
   else{
-    return "<img src= "+"gameuiImage.png"+">";
+    return "<img src= "+"images/gameuiImage.png"+">";
   }
 }
 
@@ -84,19 +84,40 @@ function checkStreamerList(id){
 
 //adds streamer
 function addStreamer(){
-  $("#submit").click(function(){
     if(checkStreamerList($("#userId").val())==false)
     {
     getUser($("#userId").val());
     streamers.push($("#userId").val());
+    console.log(streamers);
     console.log("user successfully added");
     }
     else{
-      console.log("streamer already added exist");
+      console.log("streamer already added to list");
     }
-  });
 }
 
+//removes streamer
+function removeStreamer()
+{
+   var user = $("#userId").val();
+   var mainDocument = document.getElementById(thisthing);
+   oliver.remove();
+   streamers.splice(streamers.indexOf($("#userId").val()), 1);
+   console.log(streamers);
+}
+
+//submit element
+function submitButton(){
+  $("#submit").click(function(){
+  if($('input[name="user"]:checked').val()=="Add")
+  {
+    addStreamer();
+  }
+  else{
+    removeStreamer();
+  }
+});
+}
 
 $(document).ready(function(){
 for(var i=0; i<streamers.length; i++)
@@ -106,6 +127,5 @@ for(var i=0; i<streamers.length; i++)
 
 showMenu();
 hideMenu();
-addStreamer();
-
+submitButton();
 });
