@@ -125,7 +125,8 @@ for(var i=0; i<streamers.length; i++)
   getUser(streamers[i]);
 }
 
-showMenu();
+/*showMenu()
 hideMenu();
 submitButton();
+*/
 });
