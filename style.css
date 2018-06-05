@@ -38,6 +38,7 @@ img:hover{
 }
 
 #twitchLogo{
+  width: 500px;
   font-family: 'Dimitri Swank';
   color: #FFFFFF;
   display: table;
@@ -51,6 +52,7 @@ img:hover{
 }
 
 .container{
+  font: 'Helvetica';
   position: relative;
   padding-top: 60px;
   height: 100%;
