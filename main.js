@@ -1,46 +1,25 @@
-var streamers = ["savjz","freecodecamp","Magic","OgamingSC2","cretetion","storbeck","habathcx","RobotCaleb","noobs2ninjas"];
+var streamers = ["savjz","freecodecamp","Magic","OgamingSC2","cretetion","storbeck","habathcx","RobotCaleb","noobs2ninjas", "OverwatchLeague","littlesiha"];
 
-function gameStatus(userStream){
-    if(userStream.stream == null)
-    {
-      return "<p class="+"streamStatus"+">User: offline</p>";
-    }
-    else{
-      return "<p class="+"streamStatus"+">User: online</p>"+"<p class= "+"gamePlayed>"+"Playing "+userStream.stream.game+""+"</p>";
-    }
-}
-
-//determines which div class should be used within the container
-function divClass(userStream, name)
-{
-  if(userStream.stream == null)
-  {
-    return "<div class= "+"streamerOfline"+" id= "+name+">";
-  }
-  else{
-    return "<div class= "+"streamerOnline"+" id= "+name+">";
-  }
-}
-
-
-function determineImage(userStream){
-  if(userStream.stream == null)
-  {
-    return "<img src= "+"images/gameuiOffline.png"+">";
-  }
-  else{
-    return "<img src= "+"images/gameuiImage.png"+">";
-  }
-}
 
 //Add user to webpage
-function appendUser(user, stream)
+function appendUser(user, streamer, logo, type)
 {
-  userStatus = gameStatus(stream);
-  streamerClass = divClass(stream, user.name);
-  backgroundImage = determineImage(stream);
-  $(".container").append(streamerClass+"<img src="+""+user.logo+""+" class="+"profileLogo>"+backgroundImage+"<a"+" href="+ "https://www.twitch.tv/"+user.name+ " class="+ "name"+">"+user.name+"</a>"+
-  "<p class=type>"+"Type:"+user.type+"</p>"+userStatus+"</div>");
+  let divClass;
+  let backgroundType;
+  let gameStatus;
+  if(streamer.stream == null)
+  {
+    divClass = "streamerOfline";
+    backgroundType = "images/gameuiOffline.png";
+    gameStatus = "<p class="+"streamStatus"+">User: offline</p>";
+  }
+  else {
+    divClass = "streamerOnline";
+    backgroundType = "images/gameuiImage.png";
+    gameStatus = "<p class="+"streamStatus"+">User: online</p>"+"<p class= "+"gamePlayed"+">"+"Playing "+streamer.stream.game+"</p>";
+  }
+  $(".container").append("<div class= "+divClass+">"+"<img src= "+logo+" class="+"profileLogo>"+"<img src= "+backgroundType+">"+"<a"+" href="+ "https://www.twitch.tv/"+user+ " class="+ "name"+">"+user+"</a>"+
+  "<p class=type>"+"Type: "+type+"</p>"+gameStatus+"</div>");
 }
 
 
@@ -51,7 +30,7 @@ function getUser(user)
 {
 
   $.getJSON('https://wind-bow.glitch.me/twitch-api/streams/'+user+'/?callback=?', function(streamData){
-    appendUser(userData, streamData);
+    appendUser(userData.name, streamData, userData.logo, userData.type);
   });
 });
 }
